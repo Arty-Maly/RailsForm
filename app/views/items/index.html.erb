@@ -1,0 +1,39 @@
+<h1> Search For Items </h1>
+
+<%= form_tag("/items/search/", method: "get") do %>
+  <%= label_tag(:query, "Search") %>
+  <%= text_field_tag :query, params[:query] %>
+  <%= submit_tag "Search", :name => nil%>
+<% end %>
+  <br>
+  <br>
+
+<h2>Listing Items</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.title %></td>
+        <td><%= item.description %></td>
+        <td><%= item.category %></td>
+        <td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item', new_item_path %>
