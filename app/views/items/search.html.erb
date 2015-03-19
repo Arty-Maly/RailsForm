@@ -1,24 +1,24 @@
 
  <h2>Search Results</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th colspan="10"></th>
-    </tr>
-  </thead>
+
 
   <tbody>
 
-
-    <% @items.each do |item| %>
+<table class="table">
+      <th>Title</th>
+      <th>Description</th>
+      <th>Owner</th>
+      <th>Type</th>
+      <th>Options</th>
+      <th></th>
+      <th></th>
+    <% @search_items.each do |item| %>
       <tr>
         <td><%= item.title %></td>
         <td><%= item.description %></td>
-        <td><%= item.category %></td>
+        <td><%= item.owner %></td>
+        <td><%= Type.find(item.type_id).title %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -28,5 +28,6 @@
 </table>
 
 <br>
+<h3>
 <%= link_to 'Back To Search', items_path %>
-
+</h3

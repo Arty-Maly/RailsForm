@@ -1,3 +1,5 @@
+
+
 <%= form_for(@item) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
@@ -20,8 +22,12 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <%= f.label :owner %><br>
+    <%= f.text_field :owner %>
+  </div>
+  <div class="field">
+    <%= f.label :Category  %><br>
+    <%= f.collection_select(:type_id, Type.all, :id, :title)  %>
   </div>
   <div class="actions">
     <%= f.submit %>

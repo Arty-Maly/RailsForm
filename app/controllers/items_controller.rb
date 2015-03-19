@@ -4,7 +4,9 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def search
-    @items = Item.search(params[:query])
+    puts "=============================="
+    puts params
+    @search_items = Item.search(params[:query], params[:type_id], params[:andOr])
   end
 
  def index
@@ -74,6 +76,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:title, :description, :category)
+      params.require(:item).permit(:title, :description, :owner, :type_id, :id)
     end
 end
